@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Hidden Cost of Running Your Business on Spreadsheets | Revenue Lyft</title>
+  <meta name="description" content="Spreadsheets feel free, but they quietly cost small businesses time, money, and mistakes. Here's what's really happening — and when to fix it." />
+  <link rel="canonical" href="https://revenuelyft.com/blog/posts/hidden-cost-of-spreadsheets.html" />
+  <meta property="og:title" content="The Hidden Cost of Running Your Business on Spreadsheets | Revenue Lyft" />
+  <meta property="og:description" content="Spreadsheets feel free, but they quietly cost small businesses time, money, and mistakes. Here's what's really happening — and when to fix it." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://revenuelyft.com/blog/posts/hidden-cost-of-spreadsheets.html" />
+  <meta property="article:published_time" content="2026-05-13T12:00:00.000Z" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "The Hidden Cost of Running Your Business on Spreadsheets",
+    "description": "Spreadsheets feel free, but they quietly cost small businesses time, money, and mistakes. Here's what's really happening — and when to fix it.",
+    "datePublished": "2026-05-13T12:00:00.000Z",
+    "author": {"@type": "Organization", "name": "Revenue Lyft"},
+    "publisher": {"@type": "Organization", "name": "Revenue Lyft", "url": "https://revenuelyft.com"}
+  }
+  </script>
+
+  <style>
+    :root {
+      --black: #0A0A0A;
+      --black-2: #111111;
+      --black-3: #1A1A1A;
+      --black-4: #222222;
+      --black-5: #2C2C2C;
+      --yellow: #F5C800;
+      --yellow-dim: #C9A400;
+      --white: #FFFFFF;
+      --white-80: rgba(255, 255, 255, 0.80);
+      --white-50: rgba(255, 255, 255, 0.50);
+      --white-20: rgba(255, 255, 255, 0.20);
+      --white-08: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.10);
+      --border-y: rgba(245, 200, 0, 0.25);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --r-sm: 8px;
+      --r-md: 14px;
+      --r-lg: 20px;
+      --r-xl: 28px;
+      --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--yellow); text-decoration: none; border-bottom: 1px solid var(--border-y); transition: border-color var(--transition); }
+    a:hover { border-color: var(--yellow); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    header { position: sticky; top: 0; z-index: 50; background: rgba(10,10,10,0.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    header a { border-bottom: none; }
+    .navbar__inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .navbar__logo img { height: 28px; display: block; }
+    .navbar__links { display: flex; gap: 32px; list-style: none; }
+    .navbar__links a { font-size: 14px; color: var(--white-80); transition: color var(--transition); }
+    .navbar__links a:hover { color: var(--yellow); }
+    .btn {
+      display: inline-block; font-family: var(--font-body); font-weight: 500; font-size: 14px;
+      padding: 12px 20px; border-radius: var(--r-sm); transition: all var(--transition); cursor: pointer; border: 1px solid transparent;
+    }
+    .btn--primary { background: var(--yellow); color: var(--black); border-bottom: none; }
+    .btn--primary:hover { background: var(--yellow-dim); border-bottom: none; }
+    .btn--sm { padding: 10px 16px; font-size: 13px; }
+    @media (max-width: 768px) { .navbar__links { display: none; } }
+
+    /* ARTICLE */
+    article { padding: 80px 0 64px; }
+    .article__container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .article__back {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--white-50); margin-bottom: 32px;
+      display: inline-block; border-bottom: none;
+    }
+    .article__back:hover { color: var(--yellow); }
+    .article__back::before { content: '← '; }
+    .article__meta {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 16px;
+    }
+    .article__title {
+      font-family: var(--font-display); font-size: clamp(44px, 6.5vw, 80px);
+      line-height: 1.0; letter-spacing: 0.005em; text-transform: uppercase; margin-bottom: 24px;
+    }
+    .article__lede {
+      font-size: 19px; color: var(--white-80); margin-bottom: 48px; line-height: 1.6;
+    }
+    .article__divider { height: 1px; background: var(--border); margin: 0 0 48px; }
+    .article__body { color: var(--white-80); }
+    .article__body h2 {
+      font-family: var(--font-display); font-size: 36px; line-height: 1.05; text-transform: uppercase;
+      letter-spacing: 0.01em; color: var(--white); margin: 56px 0 16px;
+    }
+    .article__body h3 {
+      font-family: var(--font-body); font-weight: 600; font-size: 22px; color: var(--white);
+      margin: 36px 0 12px;
+    }
+    .article__body p { margin-bottom: 20px; }
+    .article__body ul, .article__body ol { margin: 0 0 20px 24px; }
+    .article__body li { margin-bottom: 8px; }
+    .article__body strong { color: var(--white); }
+    .article__body code {
+      font-family: var(--font-mono); font-size: 0.92em; background: var(--black-3);
+      padding: 2px 6px; border-radius: 4px; color: var(--yellow);
+    }
+    .article__body pre {
+      background: var(--black-2); border: 1px solid var(--border); border-radius: var(--r-md);
+      padding: 20px; overflow-x: auto; margin-bottom: 24px;
+    }
+    .article__body pre code { background: transparent; padding: 0; color: var(--white-80); }
+    .article__body blockquote {
+      border-left: 3px solid var(--yellow); padding: 4px 0 4px 20px; margin: 24px 0;
+      color: var(--white); font-style: italic;
+    }
+
+    /* CTA */
+    .article__cta {
+      margin: 64px 0 0; padding: 40px 32px; background: var(--black-2);
+      border: 1px solid var(--border); border-radius: var(--r-lg); position: relative; overflow: hidden;
+    }
+    .article__cta::before {
+      content: ''; position: absolute; right: -60px; top: -60px;
+      width: 200px; height: 200px; background: var(--yellow); border-radius: var(--r-lg);
+      opacity: 0.08;
+    }
+    .article__cta h3 {
+      font-family: var(--font-display); font-size: 36px; text-transform: uppercase;
+      line-height: 1.05; margin-bottom: 12px; color: var(--white); position: relative;
+    }
+    .article__cta p { color: var(--white-80); margin-bottom: 20px; position: relative; }
+    .article__cta .btn { position: relative; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 48px 0 32px; background: var(--black-2); margin-top: 80px; }
+    footer a { border-bottom: none; }
+    .footer__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-bottom: 32px; }
+    .footer__logo img { height: 24px; display: block; }
+    .footer__links { display: flex; gap: 28px; list-style: none; }
+    .footer__links a { font-size: 14px; color: var(--white-80); transition: color var(--transition); }
+    .footer__links a:hover { color: var(--yellow); }
+    .footer__copy { font-family: var(--font-mono); font-size: 12px; color: var(--white-50); text-align: center; line-height: 1.8; }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar__inner">
+          <a href="/" class="navbar__logo"><img src="../../assets/1.png" alt="Revenue Lyft"></a>
+          <ul class="navbar__links">
+            <li><a href="/#case-studies">Work</a></li>
+            <li><a href="/#process">Process</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#community">Community</a></li>
+          </ul>
+          <a href="/#contact" class="btn btn--primary btn--sm">Book Free Consultation</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <article>
+    <div class="article__container">
+      <a href="/blog/" class="article__back">All articles</a>
+
+      <div class="article__meta">May 13, 2026 · 4 min read</div>
+      <h1 class="article__title">The Hidden Cost of Running Your Business on Spreadsheets</h1>
+      <p class="article__lede">Spreadsheets feel free, but they quietly cost small businesses time, money, and mistakes. Here's what's really happening — and when to fix it.</p>
+
+      <div class="article__divider"></div>
+
+      <div class="article__body">
+        <p>The most expensive software in your business is the one you're not paying for.</p>
+<p>It's a spreadsheet. Probably one with a name like <code>Jobs_2026_FINAL_v3</code>. It started as a quick fix and somewhere along the way it quietly started running a chunk of your company. Nobody planned for that. It just happened.</p>
+<p>The reason it feels free is that the bill never shows up as a line item. It shows up as wasted hours, double-booked customers, and a Tuesday night you spend untangling something instead of having dinner. Let's look at what's actually being charged.</p>
+<h2>The four hidden costs</h2>
+<h3>Time you're not billing for</h3>
+<p>Every "I'll just update the sheet real quick" is five to fifteen minutes. Multiply by the number of people who touch it, every day, all year. Entrepreneurs already spend about 36% of their work week on admin — that's 14+ hours gone before anyone does the actual job. A big slice of that is moving information between spreadsheets and other tools by hand.</p>
+<h3>Mistakes you only catch later</h3>
+<p>A 2024 Central Queensland University study found that 94% of business spreadsheets contain critical errors. Not "could contain." Do contain. A wrong formula, a row that didn't get copied, a number typed into the wrong cell. The catch is that you usually don't find the mistake on the day it happens. You find it when a customer calls, or when your accountant asks a question you can't answer.</p>
+<h3>The "only one person knows how it works" tax</h3>
+<p>Every long-running spreadsheet has a guardian. They built the formulas. They know which tab feeds which. When they're sick, on vacation, or quit, the whole thing wobbles. That's not a software problem. That's a single point of failure sitting inside a <code>.xlsx</code> file.</p>
+<h3>The growth ceiling</h3>
+<p>Spreadsheets scale beautifully up to about one person and one purpose. Add a second editor and you start getting overwrites. Add a third and you start getting "master" versions. At some point the sheet stops helping you grow and starts deciding how big you're allowed to get.</p>
+<h2>A real example</h2>
+<p>Picture a 12-person HVAC company. Dispatch runs out of one shared Google Sheet — <code>Jobs_2026_FINAL_v3</code>. Every morning the office manager copy-pastes that day's jobs into a second sheet for the techs, then re-types completed jobs into QuickBooks at end of day.</p>
+<p>One Tuesday she's out sick. Two techs get sent to the same address. One customer gets billed twice. Another job never gets billed at all. By the end of the week: about $120 in a wasted truck roll, a refund and an apology, $480 in a missed invoice, and three hours of the owner's evening spent untangling it.</p>
+<p>Roughly $900 and a bad mood, from one missing person and one shared sheet.</p>
+<h2>When it's actually time to replace the spreadsheet</h2>
+<p>You don't need to replace every spreadsheet. Most are fine. But these signals mean a specific one has outgrown its job:</p>
+<ul><li>More than one person is editing the same file at the same time.</li><li>You're copy-pasting between tabs or between sheets.</li><li>You're manually re-keying the same data into another system (QuickBooks, your CRM, email).</li><li>Nobody wants to touch the formulas in case something breaks.</li><li>There's a "master" version, and people argue about which one it is.</li></ul>
+<p>If two or more of those are true, that sheet is no longer a tool. It's a job.</p>
+<h2>What "replacing it" actually looks like</h2>
+<p>It's almost never a giant rebuild. It usually goes in three sizes:</p>
+<ul><li><strong>Automation glue.</strong> A small background workflow that moves data between tools you already pay for — say, jobs from your scheduling app into QuickBooks automatically. Often a few days of work.</li><li><strong>A small internal tool.</strong> A simple web page your team logs into to do the one thing the spreadsheet was doing, but with proper rules so things can't get typed wrong. A couple of weeks.</li><li><strong>A full app.</strong> Only when the workflow is genuinely complex or customer-facing.</li></ul>
+<p>Most small businesses need option one or two, not option three.</p>
+<h2>Find your most expensive spreadsheet this week</h2>
+<p>Quick exercise. Open a notes app. List every spreadsheet your business actually depends on. Next to each, write two things:</p>
+<ol><li>Hours per week it eats (across everyone who touches it).</li><li>What breaks, and how badly, if it's wrong.</li></ol>
+<p>The row with the biggest combined number is your most expensive spreadsheet. That's where to start.</p>
+<h2>If you want help</h2>
+<p>If you've already spotted the spreadsheet — the one that runs too much of your business — that's usually where we come in. We build the small internal tool or automation that retires it. No giant rebuild required.</p>
+<p>You can see what we do at <a href="https://revenuelyft.com/services">/services</a>.</p>
+      </div>
+
+      <div class="article__cta">
+        <h3>Want help building this for your business?</h3>
+        <p>We build the automations and custom software so you don't have to. Free first call, no pressure.</p>
+        <a href="/#contact" class="btn btn--primary">Book a Free Consultation</a>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__logo"><img src="../../assets/1.png" alt="Revenue Lyft"></div>
+        <ul class="footer__links">
+          <li><a href="/#case-studies">Work</a></li>
+          <li><a href="/#process">Process</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/#community">Community</a></li>
+        </ul>
+        <a href="/#contact" class="btn btn--primary btn--sm">Book a Call</a>
+      </div>
+      <p class="footer__copy">
+        © 2026 Revenue Lyft. All rights reserved.<br>
+        <a href="https://revenuelyft.com" style="color: var(--white-20);">revenuelyft.com</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
