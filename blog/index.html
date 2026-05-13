@@ -65,20 +65,32 @@
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
     /* NAV */
-    header { position: sticky; top: 0; z-index: 50; background: rgba(10,10,10,0.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
-    .navbar__inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-    .navbar__logo { display: flex; align-items: center; flex-shrink: 0; }
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 2px 0; transition: all var(--transition);
+    }
+    .navbar.scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 4px 0;
+    }
+    .navbar__inner { display: flex; align-items: center; justify-content: space-between; }
+    .navbar__logo { text-decoration: none; display: flex; align-items: center; flex-shrink: 0; }
     .navbar__logo img { width: 180px; display: block; transition: filter var(--transition); }
-    .navbar__links { display: flex; gap: 32px; list-style: none; }
-    .navbar__links a { font-size: 14px; color: var(--white-80); transition: color var(--transition); }
+    .navbar__links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .navbar__links a { font-size: 0.92rem; font-weight: 500; color: var(--white-80); transition: color var(--transition); }
     .navbar__links a:hover { color: var(--yellow); }
     .btn {
-      display: inline-block; font-family: var(--font-body); font-weight: 500; font-size: 14px;
-      padding: 12px 20px; border-radius: var(--r-sm); transition: all var(--transition); cursor: pointer; border: 1px solid transparent;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--r-sm);
+      font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+      cursor: pointer; transition: all var(--transition); text-decoration: none;
+      border: none; white-space: nowrap;
     }
     .btn--primary { background: var(--yellow); color: var(--black); }
-    .btn--primary:hover { background: var(--yellow-dim); }
-    .btn--sm { padding: 10px 16px; font-size: 13px; }
+    .btn--primary:hover { background: #FFD700; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(245, 200, 0, 0.35); }
+    .btn--sm { padding: 8px 16px; font-size: 0.88rem; }
     @media (max-width: 768px) {
       .navbar__links { display: none; }
       .navbar__logo img { width: 120px; }
@@ -161,7 +173,7 @@
 <body>
 
   <header>
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
       <div class="container">
         <div class="navbar__inner">
           <a href="/" class="navbar__logo"><img src="../assets/1.png" alt="Revenue Lyft"></a>
@@ -169,8 +181,8 @@
             <li><a href="/#case-studies">Work</a></li>
             <li><a href="/#process">Process</a></li>
             <li><a href="/#pricing">Pricing</a></li>
-            <li><a href="/blog/">Blog</a></li>
             <li><a href="/#community">Community</a></li>
+            <li><a href="/blog/">Blog</a></li>
           </ul>
           <a href="/#contact" class="btn btn--primary btn--sm">Book Free Consultation</a>
         </div>
@@ -224,5 +236,13 @@
     </div>
   </footer>
 
+  <script>
+    (function () {
+      const navbar = document.getElementById('navbar');
+      const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 60);
+      window.addEventListener('scroll', onScroll);
+      onScroll();
+    })();
+  </script>
 </body>
 </html>
