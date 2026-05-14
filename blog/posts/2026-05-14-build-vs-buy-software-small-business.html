@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build vs Buy Software: A Plain-English Framework for Small Business Owners | Revenue Lyft</title>
+  <meta name="description" content="Should a small business buy off-the-shelf software or build custom? A simple framework with real numbers to help owners decide without guesswork." />
+  <link rel="canonical" href="https://revenuelyft.com/blog/posts/build-vs-buy-software-small-business.html" />
+  <meta property="og:title" content="Build vs Buy Software: A Plain-English Framework for Small Business Owners | Revenue Lyft" />
+  <meta property="og:description" content="Should a small business buy off-the-shelf software or build custom? A simple framework with real numbers to help owners decide without guesswork." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://revenuelyft.com/blog/posts/build-vs-buy-software-small-business.html" />
+  <meta property="article:published_time" content="2026-05-14T12:00:00.000Z" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Build vs Buy Software: A Plain-English Framework for Small Business Owners",
+    "description": "Should a small business buy off-the-shelf software or build custom? A simple framework with real numbers to help owners decide without guesswork.",
+    "datePublished": "2026-05-14T12:00:00.000Z",
+    "author": {"@type": "Organization", "name": "Revenue Lyft"},
+    "publisher": {"@type": "Organization", "name": "Revenue Lyft", "url": "https://revenuelyft.com"}
+  }
+  </script>
+
+  <style>
+    :root {
+      --black: #0A0A0A;
+      --black-2: #111111;
+      --black-3: #1A1A1A;
+      --black-4: #222222;
+      --black-5: #2C2C2C;
+      --yellow: #F5C800;
+      --yellow-dim: #C9A400;
+      --white: #FFFFFF;
+      --white-80: rgba(255, 255, 255, 0.80);
+      --white-50: rgba(255, 255, 255, 0.50);
+      --white-20: rgba(255, 255, 255, 0.20);
+      --white-08: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.10);
+      --border-y: rgba(245, 200, 0, 0.25);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --r-sm: 8px;
+      --r-md: 14px;
+      --r-lg: 20px;
+      --r-xl: 28px;
+      --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--yellow); text-decoration: none; border-bottom: 1px solid var(--border-y); transition: border-color var(--transition); }
+    a:hover { border-color: var(--yellow); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 2px 0; transition: all var(--transition);
+    }
+    .navbar.scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 4px 0;
+    }
+    header a { border-bottom: none; }
+    .navbar__inner { display: flex; align-items: center; justify-content: space-between; }
+    .navbar__logo { text-decoration: none; display: flex; align-items: center; flex-shrink: 0; }
+    .navbar__logo img { width: 180px; display: block; transition: filter var(--transition); }
+    .navbar__links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .navbar__links a { font-size: 0.92rem; font-weight: 500; color: var(--white-80); transition: color var(--transition); }
+    .navbar__links a:hover { color: var(--yellow); }
+    .navbar__cta { display: flex; gap: 12px; align-items: center; }
+    .navbar__mobile-toggle {
+      display: none; background: none; border: none; cursor: pointer;
+      flex-direction: column; gap: 5px; padding: 4px;
+    }
+    .navbar__mobile-toggle span {
+      display: block; width: 24px; height: 2px; background: var(--white);
+      transition: all var(--transition);
+    }
+
+    /* MOBILE NAV OVERLAY */
+    .mobile-nav {
+      display: none; position: fixed; inset: 0; background: var(--black);
+      z-index: 999; flex-direction: column; align-items: center;
+      justify-content: center; gap: 32px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--font-display); font-size: 2.5rem; color: var(--white);
+      text-decoration: none; letter-spacing: 0.05em; transition: color var(--transition);
+      border-bottom: none;
+    }
+    .mobile-nav a:hover { color: var(--yellow); }
+    .mobile-nav__close {
+      position: absolute; top: 24px; right: 24px; background: none; border: none;
+      color: var(--white); font-size: 2rem; cursor: pointer;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--r-sm);
+      font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+      cursor: pointer; transition: all var(--transition); text-decoration: none;
+      border: none; white-space: nowrap;
+    }
+    .btn--primary { background: var(--yellow); color: var(--black); border-bottom: none; }
+    .btn--primary:hover { background: #FFD700; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(245, 200, 0, 0.35); border-bottom: none; }
+    .btn--sm { padding: 8px 16px; font-size: 0.88rem; }
+    @media (max-width: 768px) {
+      .navbar__links,
+      .navbar__cta { display: none; }
+      .navbar__mobile-toggle { display: flex; }
+      .navbar__logo img { width: 120px; }
+      .footer__inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer__links { flex-wrap: wrap; gap: 12px 20px; }
+      .footer__logo img { width: 150px; }
+    }
+
+    /* ARTICLE */
+    article { padding: 80px 0 64px; }
+    .article__container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .article__back {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--white-50); margin-bottom: 32px;
+      display: inline-block; border-bottom: none;
+    }
+    .article__back:hover { color: var(--yellow); }
+    .article__back::before { content: '← '; }
+    .article__meta {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 16px;
+    }
+    .article__title {
+      font-family: var(--font-display); font-size: clamp(44px, 6.5vw, 80px);
+      line-height: 1.0; letter-spacing: 0.005em; text-transform: uppercase; margin-bottom: 24px;
+    }
+    .article__lede {
+      font-size: 19px; color: var(--white-80); margin-bottom: 48px; line-height: 1.6;
+    }
+    .article__divider { height: 1px; background: var(--border); margin: 0 0 48px; }
+    .article__body { color: var(--white-80); }
+    .article__body h2 {
+      font-family: var(--font-display); font-size: 36px; line-height: 1.05; text-transform: uppercase;
+      letter-spacing: 0.01em; color: var(--white); margin: 56px 0 16px;
+    }
+    .article__body h3 {
+      font-family: var(--font-body); font-weight: 600; font-size: 22px; color: var(--white);
+      margin: 36px 0 12px;
+    }
+    .article__body p { margin-bottom: 20px; }
+    .article__body ul, .article__body ol { margin: 0 0 20px 24px; }
+    .article__body li { margin-bottom: 8px; }
+    .article__body strong { color: var(--white); }
+    .article__body code {
+      font-family: var(--font-mono); font-size: 0.92em; background: var(--black-3);
+      padding: 2px 6px; border-radius: 4px; color: var(--yellow);
+    }
+    .article__body pre {
+      background: var(--black-2); border: 1px solid var(--border); border-radius: var(--r-md);
+      padding: 20px; overflow-x: auto; margin-bottom: 24px;
+    }
+    .article__body pre code { background: transparent; padding: 0; color: var(--white-80); }
+    .article__body blockquote {
+      border-left: 3px solid var(--yellow); padding: 4px 0 4px 20px; margin: 24px 0;
+      color: var(--white); font-style: italic;
+    }
+
+    /* CTA */
+    .article__cta {
+      margin: 64px 0 0; padding: 40px 32px; background: var(--black-2);
+      border: 1px solid var(--border); border-radius: var(--r-lg); position: relative; overflow: hidden;
+    }
+    .article__cta::before {
+      content: ''; position: absolute; right: -60px; top: -60px;
+      width: 200px; height: 200px; background: var(--yellow); border-radius: var(--r-lg);
+      opacity: 0.08;
+    }
+    .article__cta h3 {
+      font-family: var(--font-display); font-size: 36px; text-transform: uppercase;
+      line-height: 1.05; margin-bottom: 12px; color: var(--white); position: relative;
+    }
+    .article__cta p { color: var(--white-80); margin-bottom: 20px; position: relative; }
+    .article__cta .btn { position: relative; }
+
+    /* FOOTER */
+    footer { padding: 48px 0 32px; border-top: 1px solid var(--border); margin-top: 80px; }
+    footer a { border-bottom: none; }
+    .footer__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .footer__logo { display: flex; align-items: center; }
+    .footer__logo img { width: 200px; display: block; }
+    .footer__links { display: flex; gap: 28px; list-style: none; }
+    .footer__links a { color: var(--white-50); text-decoration: none; font-size: 0.88rem; transition: color var(--transition); }
+    .footer__links a:hover { color: var(--yellow); }
+    .footer__copy {
+      font-size: 0.82rem; color: var(--white-20); width: 100%; text-align: center;
+      padding-top: 24px; border-top: 1px solid var(--border); margin-top: 24px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav__close" onclick="toggleMobileNav()">✕</button>
+    <a href="/#case-studies" onclick="toggleMobileNav()">Work</a>
+    <a href="/#process" onclick="toggleMobileNav()">Process</a>
+    <a href="/#pricing" onclick="toggleMobileNav()">Pricing</a>
+    <a href="/#community" onclick="toggleMobileNav()">Community</a>
+    <a href="/blog/" onclick="toggleMobileNav()">Blog</a>
+    <a href="/#contact" onclick="toggleMobileNav()">Contact</a>
+  </nav>
+
+  <header>
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="navbar__inner">
+          <a href="/" class="navbar__logo"><img src="../../assets/1.png" alt="Revenue Lyft"></a>
+          <ul class="navbar__links">
+            <li><a href="/#case-studies">Work</a></li>
+            <li><a href="/#process">Process</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#community">Community</a></li>
+          </ul>
+          <div class="navbar__cta">
+            <a href="/#contact" class="btn btn--primary btn--sm">Book Free Consultation</a>
+          </div>
+          <button class="navbar__mobile-toggle" onclick="toggleMobileNav()">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <article>
+    <div class="article__container">
+      <a href="/blog/" class="article__back">All articles</a>
+
+      <div class="article__meta">May 14, 2026 · 6 min read</div>
+      <h1 class="article__title">Build vs Buy Software: A Plain-English Framework for Small Business Owners</h1>
+      <p class="article__lede">Should a small business buy off-the-shelf software or build custom? A simple framework with real numbers to help owners decide without guesswork.</p>
+
+      <div class="article__divider"></div>
+
+      <div class="article__body">
+        <h2>TL;DR</h2>
+<p>Most small businesses do not need custom software. They need a few of their existing tools to stop fighting each other. Buy off-the-shelf when the workflow is the same as every other business in your industry. Build custom (or connect what you already pay for) when the workflow is how you actually make money.</p>
+<h2>Key takeaways</h2>
+<ul><li>Buy off-the-shelf software for commodity work like accounting, payroll, email, and basic scheduling.</li><li>Build custom software when the workflow is unique to how your business makes money and you are paying for three or more tools to fake one process.</li><li>A third option (integration and automation) usually costs 10-20% of a full custom build and solves most "tools that do not talk" problems.</li><li>Office workers lose around 10% of their week to manual data entry, and manual entry carries a 1-4% error rate (<a href="https://www.processmaker.com/blog/repetitive-tasks-at-work-research-and-statistics-2024/">ProcessMaker, 2024</a>; <a href="https://www.smartsheet.com/content-center/product-news/automation/workers-waste-quarter-work-week-manual-repetitive-tasks">Smartsheet</a>).</li><li>If your SaaS bill for a single workflow exceeds the one-time build cost over 2-3 years, building is worth pricing out.</li></ul>
+<p>A build vs buy decision is the choice between paying for pre-made software (buy), commissioning software made for your business (build), or connecting tools you already own so they behave like one system (glue).</p>
+<h2>What are the three options, in plain English?</h2>
+<p>There are three options, not two: buy, build, or glue. Most owners only consider the first two and overpay either way.</p>
+<ul><li><strong>Off-the-shelf software</strong> is pre-made software many businesses use, like QuickBooks or Square. You rent it monthly.</li><li><strong>Custom software</strong> is a tool built specifically for your business. You pay once to build it, then a smaller amount to maintain it.</li><li><strong>Integration and automation</strong> ("glue") is a small piece of custom code that makes your existing tools pass data to each other automatically.</li></ul>
+<h2>When is buying off-the-shelf the right call?</h2>
+<p>Buy when the workflow is a commodity that looks the same in every business your size. Accounting, payroll, email marketing, basic CRM, calendar scheduling, and card payments are solved problems. Thousands of companies already pay engineers to make that software better every month, and you cannot out-build them on a small budget.</p>
+<p>If you find yourself thinking "we do payroll just like everyone else," that is the signal to buy.</p>
+<h2>When should you consider building custom?</h2>
+<p>Build when the workflow is unique to how your business makes money and existing tools cannot fit it without duct tape. Three signs:</p>
+<ol><li>You pay for three or more SaaS tools to fake one workflow.</li><li>Someone on your team spends multiple hours a week copying data between systems.</li><li>Your three-year SaaS cost for that workflow is higher than a one-time build.</li></ol>
+<p>Off-the-shelf software often costs more than custom over three or more years for non-commodity workflows (<a href="https://www.syberry.com/blog/custom-software-vs-off-the-shelf-software/">Syberry</a>).</p>
+<h2>What is the middle option most owners miss?</h2>
+<p>The middle option is integration, also called automation or "glue." It usually costs 10-20% of a full custom build because nobody is rebuilding QuickBooks or Square. A developer writes a small connector that moves data between the tools you already pay for.</p>
+<p>This matters because 69% of employees switch between up to 10 apps per hour (<a href="https://tallyfy.com/productivity-apps/">Tallyfy</a>), and 46% of small businesses say paper-intensive processes waste time every day (<a href="https://www.filecenter.com/blog/document-management-statistics/">FileCenter</a>). Most of that pain is a connection problem, not a software problem.</p>
+<h2>A 5-question decision checklist</h2>
+<p>Score each question yes (1) or no (0):</p>
+<ol><li>Does every business in my industry run this workflow the same way?</li><li>Is there a well-reviewed SaaS tool that already covers 80% of it?</li><li>Is the manual work under two hours per week?</li><li>Is my three-year SaaS cost lower than a one-time build quote?</li><li>Am I fine giving up custom features to keep things simple?</li></ol>
+<p><strong>4-5 yes:</strong> buy off-the-shelf. <strong>2-3 yes:</strong> look at integration/automation first. <strong>0-1 yes:</strong> price a custom build.</p>
+<h2>A worked example: the Austin bakery</h2>
+<p>A 14-person specialty bakery in Austin uses Square for POS, QuickBooks for accounting, Google Sheets for custom cake orders, and Mailchimp for email. The assistant spends about 6 hours a week copying custom cake orders from email into the sheet, then into Square, then re-keying weekly totals into QuickBooks.</p>
+<p>The math:</p>
+<ul><li>Labor: 6 hours × 52 weeks × $22/hr = <strong>$6,864/yr</strong></li><li>Errors: 4% of ~800 orders/yr = ~32 mis-keyed orders × $40 = <strong>$1,280/yr</strong></li><li>Total drag: <strong>~$8,144/yr</strong></li></ul>
+<p>The three paths:</p>
+<ul><li><strong>Buy:</strong> a bakery-specific all-in-one POS at $400/mo = $4,800/yr, plus migration pain and losing Square's payment rates.</li><li><strong>Build:</strong> $35,000-$60,000 full custom order system. Overkill for this size.</li><li><strong>Glue:</strong> $4,000-$7,000 one-time integration that pulls web-form orders into Square and QuickBooks. Payback in 6-10 months, and the bakery keeps the tools the team already knows.</li></ul>
+<p>For this bakery, glue wins. For a 200-person manufacturer with a one-of-a-kind production schedule, build would win. For a brand-new solo consultant, buy would win.</p>
+<h2>FAQ</h2>
+<h3>Is custom software only for big companies?</h3>
+<p>No. Small businesses regularly commission custom tools that cost $4,000 to $20,000, especially small integrations and internal dashboards. The "custom software is for enterprises" idea is outdated.</p>
+<h3>How much does custom software cost for a small business?</h3>
+<p>A small integration or single-purpose tool usually costs $4,000 to $15,000. A full custom system that replaces several SaaS products typically runs $30,000 to $80,000. Maintenance afterward is usually 10-20% of the build cost per year.</p>
+<h3>What is the difference between custom software and an integration/automation?</h3>
+<p>Custom software is a new application built from scratch. An integration is a small piece of code that connects tools you already pay for so they share data automatically. Integrations are much cheaper because they reuse existing software.</p>
+<h3>How long does it take to build a small custom tool?</h3>
+<p>A focused integration or internal tool takes 3-8 weeks. A full custom system that replaces multiple SaaS products takes 3-6 months. Anything advertised as "two weeks for a full system" is usually a template, not a custom build.</p>
+<h3>What happens to my SaaS subscriptions if I build custom?</h3>
+<p>You usually keep the commodity ones (accounting, payroll, email) and cancel the SaaS products you were using to patch over a missing workflow. Most builds replace 1-3 subscriptions, not all of them.</p>
+<h3>How do I know if my workflow is "unique enough" to justify building?</h3>
+<p>Ask whether the workflow is how you make money or just how you run the business. Payroll is how you run the business. Custom cake orders, custom quoting, custom routing, and custom production are how you make money. Those are the workflows worth building for.</p>
+<h2>A quick note from us</h2>
+<p>At RevenueLyft we build custom software and automations for small businesses, and we tell owners to buy off-the-shelf more often than we tell them to build. If you want a second opinion on your stack, we offer a free decision review: we look at the tools you pay for today and tell you honestly whether to build, buy, or just connect what you already have.</p>
+<h2>Sources</h2>
+<ul><li><a href="https://www.processmaker.com/blog/repetitive-tasks-at-work-research-and-statistics-2024/">ProcessMaker — Repetitive tasks at work, research and statistics, 2024</a></li><li><a href="https://www.smartsheet.com/content-center/product-news/automation/workers-waste-quarter-work-week-manual-repetitive-tasks">Smartsheet — Workers waste a quarter of their week on manual, repetitive tasks</a></li><li><a href="https://tallyfy.com/productivity-apps/">Tallyfy — Productivity apps statistics</a></li><li><a href="https://www.filecenter.com/blog/document-management-statistics/">FileCenter — Document management statistics</a></li><li><a href="https://www.syberry.com/blog/custom-software-vs-off-the-shelf-software/">Syberry — Custom software vs off-the-shelf software</a></li></ul>
+      </div>
+
+      <div class="article__cta">
+        <h3>Want help building this for your business?</h3>
+        <p>We build the automations and custom software so you don't have to. Free first call, no pressure.</p>
+        <a href="/#contact" class="btn btn--primary">Book a Free Consultation</a>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__logo"><img src="../../assets/1.png" alt="Revenue Lyft"></div>
+        <ul class="footer__links">
+          <li><a href="/#case-studies">Work</a></li>
+          <li><a href="/#process">Process</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/#community">Community</a></li>
+        </ul>
+        <a href="/#contact" class="btn btn--primary btn--sm">Book a Call</a>
+      </div>
+      <p class="footer__copy">
+        © 2026 Revenue Lyft. All rights reserved.<br>
+        <a href="https://revenuelyft.com" style="color: var(--white-20);">revenuelyft.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const navbar = document.getElementById('navbar');
+      const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 60);
+      window.addEventListener('scroll', onScroll);
+      onScroll();
+    })();
+    function toggleMobileNav() {
+      document.getElementById('mobileNav').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
