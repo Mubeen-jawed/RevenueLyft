@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automation ROI Calculator for Small Business: The Sticky-Note Math | Revenue Lyft</title>
+  <meta name="description" content="Simple formula to figure out if a custom automation will pay for itself. Real numbers, payback period, and what most owners forget to count." />
+  <link rel="canonical" href="https://revenuelyft.com/blog/posts/automation-roi-calculator-small-business.html" />
+  <meta property="og:title" content="Automation ROI Calculator for Small Business: The Sticky-Note Math | Revenue Lyft" />
+  <meta property="og:description" content="Simple formula to figure out if a custom automation will pay for itself. Real numbers, payback period, and what most owners forget to count." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://revenuelyft.com/blog/posts/automation-roi-calculator-small-business.html" />
+  <meta property="article:published_time" content="2026-06-09T12:00:00.000Z" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Automation ROI Calculator for Small Business: The Sticky-Note Math",
+    "description": "Simple formula to figure out if a custom automation will pay for itself. Real numbers, payback period, and what most owners forget to count.",
+    "datePublished": "2026-06-09T12:00:00.000Z",
+    "author": {"@type": "Organization", "name": "Revenue Lyft"},
+    "publisher": {"@type": "Organization", "name": "Revenue Lyft", "url": "https://revenuelyft.com"}
+  }
+  </script>
+
+  <style>
+    :root {
+      --black: #0A0A0A;
+      --black-2: #111111;
+      --black-3: #1A1A1A;
+      --black-4: #222222;
+      --black-5: #2C2C2C;
+      --yellow: #F5C800;
+      --yellow-dim: #C9A400;
+      --white: #FFFFFF;
+      --white-80: rgba(255, 255, 255, 0.80);
+      --white-50: rgba(255, 255, 255, 0.50);
+      --white-20: rgba(255, 255, 255, 0.20);
+      --white-08: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.10);
+      --border-y: rgba(245, 200, 0, 0.25);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --r-sm: 8px;
+      --r-md: 14px;
+      --r-lg: 20px;
+      --r-xl: 28px;
+      --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--yellow); text-decoration: none; border-bottom: 1px solid var(--border-y); transition: border-color var(--transition); }
+    a:hover { border-color: var(--yellow); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 2px 0; transition: all var(--transition);
+    }
+    .navbar.scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 4px 0;
+    }
+    header a { border-bottom: none; }
+    .navbar__inner { display: flex; align-items: center; justify-content: space-between; }
+    .navbar__logo { text-decoration: none; display: flex; align-items: center; flex-shrink: 0; }
+    .navbar__logo img { width: 180px; display: block; transition: filter var(--transition); }
+    .navbar__links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .navbar__links a { font-size: 0.92rem; font-weight: 500; color: var(--white-80); transition: color var(--transition); }
+    .navbar__links a:hover { color: var(--yellow); }
+    .navbar__cta { display: flex; gap: 12px; align-items: center; }
+    .navbar__mobile-toggle {
+      display: none; background: none; border: none; cursor: pointer;
+      flex-direction: column; gap: 5px; padding: 4px;
+    }
+    .navbar__mobile-toggle span {
+      display: block; width: 24px; height: 2px; background: var(--white);
+      transition: all var(--transition);
+    }
+
+    /* MOBILE NAV OVERLAY */
+    .mobile-nav {
+      display: none; position: fixed; inset: 0; background: var(--black);
+      z-index: 999; flex-direction: column; align-items: center;
+      justify-content: center; gap: 32px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--font-display); font-size: 2.5rem; color: var(--white);
+      text-decoration: none; letter-spacing: 0.05em; transition: color var(--transition);
+      border-bottom: none;
+    }
+    .mobile-nav a:hover { color: var(--yellow); }
+    .mobile-nav__close {
+      position: absolute; top: 24px; right: 24px; background: none; border: none;
+      color: var(--white); font-size: 2rem; cursor: pointer;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--r-sm);
+      font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+      cursor: pointer; transition: all var(--transition); text-decoration: none;
+      border: none; white-space: nowrap;
+    }
+    .btn--primary { background: var(--yellow); color: var(--black); border-bottom: none; }
+    .btn--primary:hover { background: #FFD700; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(245, 200, 0, 0.35); border-bottom: none; }
+    .btn--sm { padding: 8px 16px; font-size: 0.88rem; }
+    @media (max-width: 768px) {
+      .navbar__links,
+      .navbar__cta { display: none; }
+      .navbar__mobile-toggle { display: flex; }
+      .navbar__logo img { width: 120px; }
+      .footer__inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer__links { flex-wrap: wrap; gap: 12px 20px; }
+      .footer__logo img { width: 150px; }
+    }
+
+    /* ARTICLE */
+    article { padding: 80px 0 64px; }
+    .article__container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .article__back {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--white-50); margin-bottom: 32px;
+      display: inline-block; border-bottom: none;
+    }
+    .article__back:hover { color: var(--yellow); }
+    .article__back::before { content: '← '; }
+    .article__meta {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 16px;
+    }
+    .article__title {
+      font-family: var(--font-display); font-size: clamp(44px, 6.5vw, 80px);
+      line-height: 1.0; letter-spacing: 0.005em; text-transform: uppercase; margin-bottom: 24px;
+    }
+    .article__lede {
+      font-size: 19px; color: var(--white-80); margin-bottom: 48px; line-height: 1.6;
+    }
+    .article__divider { height: 1px; background: var(--border); margin: 0 0 48px; }
+    .article__body { color: var(--white-80); }
+    .article__body h2 {
+      font-family: var(--font-display); font-size: 36px; line-height: 1.05; text-transform: uppercase;
+      letter-spacing: 0.01em; color: var(--white); margin: 56px 0 16px;
+    }
+    .article__body h3 {
+      font-family: var(--font-body); font-weight: 600; font-size: 22px; color: var(--white);
+      margin: 36px 0 12px;
+    }
+    .article__body p { margin-bottom: 20px; }
+    .article__body ul, .article__body ol { margin: 0 0 20px 24px; }
+    .article__body li { margin-bottom: 8px; }
+    .article__body strong { color: var(--white); }
+    .article__body code {
+      font-family: var(--font-mono); font-size: 0.92em; background: var(--black-3);
+      padding: 2px 6px; border-radius: 4px; color: var(--yellow);
+    }
+    .article__body pre {
+      background: var(--black-2); border: 1px solid var(--border); border-radius: var(--r-md);
+      padding: 20px; overflow-x: auto; margin-bottom: 24px;
+    }
+    .article__body pre code { background: transparent; padding: 0; color: var(--white-80); }
+    .article__body blockquote {
+      border-left: 3px solid var(--yellow); padding: 4px 0 4px 20px; margin: 24px 0;
+      color: var(--white); font-style: italic;
+    }
+
+    /* CTA */
+    .article__cta {
+      margin: 64px 0 0; padding: 40px 32px; background: var(--black-2);
+      border: 1px solid var(--border); border-radius: var(--r-lg); position: relative; overflow: hidden;
+    }
+    .article__cta::before {
+      content: ''; position: absolute; right: -60px; top: -60px;
+      width: 200px; height: 200px; background: var(--yellow); border-radius: var(--r-lg);
+      opacity: 0.08;
+    }
+    .article__cta h3 {
+      font-family: var(--font-display); font-size: 36px; text-transform: uppercase;
+      line-height: 1.05; margin-bottom: 12px; color: var(--white); position: relative;
+    }
+    .article__cta p { color: var(--white-80); margin-bottom: 20px; position: relative; }
+    .article__cta .btn { position: relative; }
+
+    /* FOOTER */
+    footer { padding: 48px 0 32px; border-top: 1px solid var(--border); margin-top: 80px; }
+    footer a { border-bottom: none; }
+    .footer__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .footer__logo { display: flex; align-items: center; }
+    .footer__logo img { width: 200px; display: block; }
+    .footer__links { display: flex; gap: 28px; list-style: none; }
+    .footer__links a { color: var(--white-50); text-decoration: none; font-size: 0.88rem; transition: color var(--transition); }
+    .footer__links a:hover { color: var(--yellow); }
+    .footer__copy {
+      font-size: 0.82rem; color: var(--white-20); width: 100%; text-align: center;
+      padding-top: 24px; border-top: 1px solid var(--border); margin-top: 24px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav__close" onclick="toggleMobileNav()">✕</button>
+    <a href="/#case-studies" onclick="toggleMobileNav()">Work</a>
+    <a href="/#process" onclick="toggleMobileNav()">Process</a>
+    <a href="/#pricing" onclick="toggleMobileNav()">Pricing</a>
+    <a href="/#community" onclick="toggleMobileNav()">Community</a>
+    <a href="/blog/" onclick="toggleMobileNav()">Blog</a>
+    <a href="/#contact" onclick="toggleMobileNav()">Contact</a>
+  </nav>
+
+  <header>
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="navbar__inner">
+          <a href="/" class="navbar__logo"><img src="../../assets/1.png" alt="Revenue Lyft"></a>
+          <ul class="navbar__links">
+            <li><a href="/#case-studies">Work</a></li>
+            <li><a href="/#process">Process</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#community">Community</a></li>
+          </ul>
+          <div class="navbar__cta">
+            <a href="/#contact" class="btn btn--primary btn--sm">Book Free Consultation</a>
+          </div>
+          <button class="navbar__mobile-toggle" onclick="toggleMobileNav()">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <article>
+    <div class="article__container">
+      <a href="/blog/" class="article__back">All articles</a>
+
+      <div class="article__meta">June 9, 2026 · 6 min read</div>
+      <h1 class="article__title">Automation ROI Calculator for Small Business: The Sticky-Note Math</h1>
+      <p class="article__lede">Simple formula to figure out if a custom automation will pay for itself. Real numbers, payback period, and what most owners forget to count.</p>
+
+      <div class="article__divider"></div>
+
+      <div class="article__body">
+        <h2>TL;DR</h2>
+<p>Automation payback period equals build cost divided by annual net savings. Most small-business automations pay for themselves in 6 to 12 months. To get an honest number, use a loaded labor rate (hourly wage multiplied by 1.25 to 1.4), add error and rework costs you currently absorb, and subtract ongoing software plus maintenance fees.</p>
+<h2>Key takeaways</h2>
+<ul><li>Payback period (in months) = build cost ÷ annual net savings × 12.</li><li>Typical small-business automation pays back in 6 to 12 months; under 6 months is excellent, over 18 months means rethink the scope.</li><li>Forrester measured a 248% three-year ROI on process automation built with Microsoft Power Platform.</li><li>Workers spend about 4.5 hours a week on tasks that could be automated, and RPA saves roughly 200 hours per affected role per year.</li><li>Companies that only count "time saved" undervalue their automation by 40% to 60% because they ignore error rework and opportunity cost.</li><li>The fastest-payback tasks are rule-based, done more than 20 times a week, have structured inputs, and are currently performed by a paid human.</li></ul>
+<p>Automation ROI is the ratio of money a custom workflow saves your business each year to what it cost to build and run.</p>
+<h2>How do you calculate automation ROI?</h2>
+<p>You calculate automation ROI with two simple formulas. Payback period tells you when you break even. ROI percentage tells you the return over a longer window.</p>
+<ul><li><strong>Payback period (months)</strong> = build cost ÷ annual net savings × 12</li><li><strong>ROI %</strong> = (total savings over N years − total cost over N years) ÷ total cost × 100</li></ul>
+<p>Annual net savings is the labor and error money you stop spending, minus the hosting and maintenance you start spending. That's it. The math fits on a sticky note. The hard part is being honest about the numbers you put in it.</p>
+<h2>What costs and savings should you include?</h2>
+<p>Include everything that changes because of the automation, not just the obvious stuff.</p>
+<p><strong>Costs to count:</strong></p>
+<ul><li>Build cost (the quote from your developer)</li><li>Hosting and software subscriptions (often $30 to $200 a month)</li><li>Maintenance and small changes (budget 10% to 20% of build cost per year)</li><li>Your time during the build (interviews, testing, sign-off)</li></ul>
+<p><strong>Savings to count:</strong></p>
+<ul><li>Labor hours saved, at a fully loaded rate (see next section)</li><li>Error and rework costs (billing mistakes caught late, duplicate orders, missed invoices)</li><li>Faster cycle time (a quote sent in 10 minutes instead of 2 days can win deals you'd otherwise lose)</li><li>Headcount you don't have to hire as you grow</li></ul>
+<p>Auxiliobits found that businesses measuring only time saved undervalue their automation by 40% to 60%. That's because rework and opportunity cost are usually bigger than the raw hours.</p>
+<h2>What is a "fully loaded" labor rate and why does it matter?</h2>
+<p>A fully loaded labor rate is the real hourly cost of an employee once you add payroll tax, benefits, software seats, equipment, and overhead. The standard multiplier is 1.25 to 1.4 times the wage.</p>
+<p>So a $25/hour office manager actually costs the business about $32/hour. If you use the raw wage, you'll underestimate savings by 25% to 40% and the automation will look worse than it is.</p>
+<h2>A worked example: automating job intake for a 12-person HVAC company</h2>
+<p>Here's a real-feeling scenario with real arithmetic.</p>
+<p>The office manager at a 12-person HVAC company spends 6 hours a week copying job details from email into QuickBooks and the scheduling tool. Her wage is $25/hour. Loaded rate: $32/hour.</p>
+<ul><li>Labor saved: 6 hrs × 52 weeks × $32 = <strong>$9,984/year</strong></li><li>Billing errors caught late (estimated from last year's books): <strong>$1,500/year</strong></li><li><strong>Gross annual savings: $11,484</strong></li><li>Hosting and maintenance: <strong>−$600/year</strong></li><li><strong>Net annual savings: $10,884</strong></li></ul>
+<p>Custom integration build: <strong>$12,000</strong>.</p>
+<p>Payback period = $12,000 ÷ $10,884 × 12 ≈ <strong>13 months</strong>. Year-2 ROI = ($21,768 − $12,600) ÷ $12,600 ≈ <strong>73%</strong> and climbing from there.</p>
+<p>Verdict: worth it if the intake process is stable for the next two years. Borderline if QuickBooks workflows are about to change, because you'll pay to rebuild part of the integration.</p>
+<h2>What's a good payback period for a small business?</h2>
+<ul><li><strong>Under 6 months:</strong> excellent. Usually a high-volume, very repetitive task.</li><li><strong>6 to 12 months:</strong> the normal target. Artsyl and Symtrax both cite this as the average for business process automation.</li><li><strong>12 to 18 months:</strong> acceptable if the process is stable and the system has a long shelf life.</li><li><strong>Over 18 months:</strong> rethink the scope. Often you're automating too much at once or the underlying process needs cleanup first.</li></ul>
+<h2>Which tasks have the fastest payback?</h2>
+<p>The best automation candidates share four traits (Nividous):</p>
+<ol><li><strong>Rule-based</strong> — clear if/then logic, not judgment calls.</li><li><strong>High frequency</strong> — done more than 20 times a week.</li><li><strong>Structured inputs</strong> — data comes in a predictable format (forms, emails with the same fields, spreadsheets).</li><li><strong>Currently done by a paid human</strong> — not a task that's already free or already broken.</li></ol>
+<p>Job intake, invoice entry, appointment reminders, lead routing, and report generation usually tick all four boxes.</p>
+<h2>FAQ</h2>
+<h3>How long until automation pays for itself?</h3>
+<p>Most small-business automations pay back in 6 to 12 months. Simple, high-volume tasks can pay back in under 6 months. Anything over 18 months is a signal to cut the scope.</p>
+<h3>Is automation worth it for a 5-person business?</h3>
+<p>Yes, if you pick the right task. A 5-person business often has one person doing 6 to 10 hours of repetitive admin a week, which is enough volume to justify a $5,000 to $10,000 build.</p>
+<h3>What's realistic ROI in year one?</h3>
+<p>Year-one ROI is often close to zero or slightly negative because the build cost lands up front. The real returns show up in year two and beyond. Forrester measured 248% over three years on Power Platform automations.</p>
+<h3>Do I need to lay people off to see ROI?</h3>
+<p>No. Most small businesses redirect the saved hours to higher-value work (sales follow-up, customer service, new services) instead of cutting headcount. The savings still count, because you avoided the next hire.</p>
+<h3>What if the process changes after I automate it?</h3>
+<p>Budget 10% to 20% of the build cost per year for maintenance and small changes. Big process changes (new accounting system, new CRM) can mean a partial rebuild, which is why stable processes have the best ROI.</p>
+<h3>Should I use a generic ROI calculator I find online?</h3>
+<p>Generic calculators are fine for a rough check but they usually skip error costs and use raw wages instead of loaded rates. That's how they end up off by 40% or more.</p>
+<h2>Sources</h2>
+<ul><li><a href="https://www.automationanywhere.com/company/blog/rpa-thought-leadership/how-to-more-accurately-calculate-rpa-roi">Automation Anywhere — How to more accurately calculate RPA ROI</a></li><li><a href="https://www.artsyltech.com/blog/invoice-processing-automation-guide">Artsyl — Invoice processing automation guide</a></li><li><a href="https://www.auxiliobits.com/blog/the-cfos-guide-to-automation-investment-and-payback-periods/">Auxiliobits — The CFO's guide to automation investment and payback periods</a></li><li><a href="https://www.prosperspark.com/automation-roi-calculator/">ProsperSpark — Automation ROI calculator</a></li><li><a href="https://www.microsoft.com/en-us/power-platform/blog/power-automate/boost-efficiency-and-increase-roi-with-next-level-process-automation/">Microsoft Power Platform — Boost efficiency and ROI with process automation</a></li><li><a href="https://blog.symtrax.com/know-the-roi-of-your-business-process-automation/">Symtrax — Know the ROI of your business process automation</a></li><li><a href="https://nividous.com/blogs/how-to-calculate-roi-for-rpa-project">Nividous — How to calculate ROI for an RPA project</a></li></ul>
+<p>At RevenueLyft we build the kind of custom integrations and workflow automations described above — intake bots, QuickBooks syncs, scheduling glue, internal tools that kill copy-paste work. If you want a second pair of eyes on the math before you sign a quote, yours or anyone else's, that's a free conversation.</p>
+      </div>
+
+      <div class="article__cta">
+        <h3>Want help building this for your business?</h3>
+        <p>We build the automations and custom software so you don't have to. Free first call, no pressure.</p>
+        <a href="/#contact" class="btn btn--primary">Book a Free Consultation</a>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__logo"><img src="../../assets/1.png" alt="Revenue Lyft"></div>
+        <ul class="footer__links">
+          <li><a href="/#case-studies">Work</a></li>
+          <li><a href="/#process">Process</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/#community">Community</a></li>
+        </ul>
+        <a href="/#contact" class="btn btn--primary btn--sm">Book a Call</a>
+      </div>
+      <p class="footer__copy">
+        © 2026 Revenue Lyft. All rights reserved.<br>
+        <a href="https://revenuelyft.com" style="color: var(--white-20);">revenuelyft.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const navbar = document.getElementById('navbar');
+      const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 60);
+      window.addEventListener('scroll', onScroll);
+      onScroll();
+    })();
+    function toggleMobileNav() {
+      document.getElementById('mobileNav').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
