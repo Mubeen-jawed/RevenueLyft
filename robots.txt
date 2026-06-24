@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://revenuelyft.com/sitemap.xml
+Sitemap: https://www.revenuelyft.com/sitemap.xml
