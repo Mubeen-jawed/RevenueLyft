@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Monday Morning Report: What Recurring Reports Actually Cost Your Small Business | Revenue Lyft</title>
+  <meta name="description" content="Recurring reports quietly cost small businesses 10-20 hours a week. Here's the math, a 5-minute calculator, and when to automate." />
+  <link rel="canonical" href="https://revenuelyft.com/blog/posts/automate-recurring-reports-small-business.html" />
+  <meta property="og:title" content="The Monday Morning Report: What Recurring Reports Actually Cost Your Small Business | Revenue Lyft" />
+  <meta property="og:description" content="Recurring reports quietly cost small businesses 10-20 hours a week. Here's the math, a 5-minute calculator, and when to automate." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://revenuelyft.com/blog/posts/automate-recurring-reports-small-business.html" />
+  <meta property="article:published_time" content="2026-07-02T12:00:00.000Z" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "The Monday Morning Report: What Recurring Reports Actually Cost Your Small Business",
+    "description": "Recurring reports quietly cost small businesses 10-20 hours a week. Here's the math, a 5-minute calculator, and when to automate.",
+    "datePublished": "2026-07-02T12:00:00.000Z",
+    "author": {"@type": "Organization", "name": "Revenue Lyft"},
+    "publisher": {"@type": "Organization", "name": "Revenue Lyft", "url": "https://revenuelyft.com"}
+  }
+  </script>
+
+  <style>
+    :root {
+      --black: #0A0A0A;
+      --black-2: #111111;
+      --black-3: #1A1A1A;
+      --black-4: #222222;
+      --black-5: #2C2C2C;
+      --yellow: #F5C800;
+      --yellow-dim: #C9A400;
+      --white: #FFFFFF;
+      --white-80: rgba(255, 255, 255, 0.80);
+      --white-50: rgba(255, 255, 255, 0.50);
+      --white-20: rgba(255, 255, 255, 0.20);
+      --white-08: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.10);
+      --border-y: rgba(245, 200, 0, 0.25);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --r-sm: 8px;
+      --r-md: 14px;
+      --r-lg: 20px;
+      --r-xl: 28px;
+      --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--yellow); text-decoration: none; border-bottom: 1px solid var(--border-y); transition: border-color var(--transition); }
+    a:hover { border-color: var(--yellow); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 2px 0; transition: all var(--transition);
+    }
+    .navbar.scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 4px 0;
+    }
+    header a { border-bottom: none; }
+    .navbar__inner { display: flex; align-items: center; justify-content: space-between; }
+    .navbar__logo { text-decoration: none; display: flex; align-items: center; flex-shrink: 0; }
+    .navbar__logo img { width: 180px; display: block; transition: filter var(--transition); }
+    .navbar__links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .navbar__links a { font-size: 0.92rem; font-weight: 500; color: var(--white-80); transition: color var(--transition); }
+    .navbar__links a:hover { color: var(--yellow); }
+    .navbar__cta { display: flex; gap: 12px; align-items: center; }
+    .navbar__mobile-toggle {
+      display: none; background: none; border: none; cursor: pointer;
+      flex-direction: column; gap: 5px; padding: 4px;
+    }
+    .navbar__mobile-toggle span {
+      display: block; width: 24px; height: 2px; background: var(--white);
+      transition: all var(--transition);
+    }
+
+    /* MOBILE NAV OVERLAY */
+    .mobile-nav {
+      display: none; position: fixed; inset: 0; background: var(--black);
+      z-index: 999; flex-direction: column; align-items: center;
+      justify-content: center; gap: 32px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--font-display); font-size: 2.5rem; color: var(--white);
+      text-decoration: none; letter-spacing: 0.05em; transition: color var(--transition);
+      border-bottom: none;
+    }
+    .mobile-nav a:hover { color: var(--yellow); }
+    .mobile-nav__close {
+      position: absolute; top: 24px; right: 24px; background: none; border: none;
+      color: var(--white); font-size: 2rem; cursor: pointer;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--r-sm);
+      font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+      cursor: pointer; transition: all var(--transition); text-decoration: none;
+      border: none; white-space: nowrap;
+    }
+    .btn--primary { background: var(--yellow); color: var(--black); border-bottom: none; }
+    .btn--primary:hover { background: #FFD700; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(245, 200, 0, 0.35); border-bottom: none; }
+    .btn--sm { padding: 8px 16px; font-size: 0.88rem; }
+    @media (max-width: 768px) {
+      .navbar__links,
+      .navbar__cta { display: none; }
+      .navbar__mobile-toggle { display: flex; }
+      .navbar__logo img { width: 120px; }
+      .footer__inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer__links { flex-wrap: wrap; gap: 12px 20px; }
+      .footer__logo img { width: 150px; }
+
+      .container, .article__container { padding-left: 20px; padding-right: 20px; }
+      article { padding: 72px 0 48px; }
+      .article__lede { font-size: 17px; margin-bottom: 36px; }
+      .article__divider { margin-bottom: 36px; }
+      .article__body h2 { font-size: 30px; margin: 44px 0 14px; }
+      .article__body h3 { font-size: 20px; margin: 30px 0 10px; }
+      .article__cta { padding: 32px 22px; margin-top: 48px; }
+      .article__cta h3 { font-size: 30px; }
+    }
+
+    @media (max-width: 480px) {
+      html, body { font-size: 16px; }
+      .container, .article__container { padding-left: 16px; padding-right: 16px; }
+      article { padding: 64px 0 40px; }
+      .article__title { line-height: 1.05; }
+      .article__lede { font-size: 16px; }
+      .article__body h2 { font-size: 26px; }
+      .article__body h3 { font-size: 19px; }
+      .article__body pre { padding: 14px; border-radius: var(--r-sm); }
+      .article__cta { padding: 24px 18px; }
+      .article__cta h3 { font-size: 26px; }
+      .footer__links { gap: 10px 16px; font-size: 0.82rem; }
+      .mobile-nav a { font-size: 2rem; }
+    }
+
+    /* ARTICLE */
+    article { padding: 80px 0 64px; }
+    .article__container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .article__back {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--white-50); margin-bottom: 32px;
+      display: inline-block; border-bottom: none;
+    }
+    .article__back:hover { color: var(--yellow); }
+    .article__back::before { content: '← '; }
+    .article__meta {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 16px;
+    }
+    .article__title {
+      font-family: var(--font-display); font-size: clamp(44px, 6.5vw, 80px);
+      line-height: 1.0; letter-spacing: 0.005em; text-transform: uppercase; margin-bottom: 24px;
+    }
+    .article__lede {
+      font-size: 19px; color: var(--white-80); margin-bottom: 48px; line-height: 1.6;
+    }
+    .article__divider { height: 1px; background: var(--border); margin: 0 0 48px; }
+    .article__body { color: var(--white-80); }
+    .article__body h2 {
+      font-family: var(--font-display); font-size: 36px; line-height: 1.05; text-transform: uppercase;
+      letter-spacing: 0.01em; color: var(--white); margin: 56px 0 16px;
+    }
+    .article__body h3 {
+      font-family: var(--font-body); font-weight: 600; font-size: 22px; color: var(--white);
+      margin: 36px 0 12px;
+    }
+    .article__body p { margin-bottom: 20px; }
+    .article__body ul, .article__body ol { margin: 0 0 20px 24px; }
+    .article__body li { margin-bottom: 8px; }
+    .article__body strong { color: var(--white); }
+    .article__body code {
+      font-family: var(--font-mono); font-size: 0.92em; background: var(--black-3);
+      padding: 2px 6px; border-radius: 4px; color: var(--yellow);
+    }
+    .article__body pre {
+      background: var(--black-2); border: 1px solid var(--border); border-radius: var(--r-md);
+      padding: 20px; overflow-x: auto; margin-bottom: 24px;
+    }
+    .article__body pre code { background: transparent; padding: 0; color: var(--white-80); }
+    .article__body blockquote {
+      border-left: 3px solid var(--yellow); padding: 4px 0 4px 20px; margin: 24px 0;
+      color: var(--white); font-style: italic;
+    }
+
+    /* CTA */
+    .article__cta {
+      margin: 64px 0 0; padding: 40px 32px; background: var(--black-2);
+      border: 1px solid var(--border); border-radius: var(--r-lg); position: relative; overflow: hidden;
+    }
+    .article__cta::before {
+      content: ''; position: absolute; right: -60px; top: -60px;
+      width: 200px; height: 200px; background: var(--yellow); border-radius: var(--r-lg);
+      opacity: 0.08;
+    }
+    .article__cta h3 {
+      font-family: var(--font-display); font-size: 36px; text-transform: uppercase;
+      line-height: 1.05; margin-bottom: 12px; color: var(--white); position: relative;
+    }
+    .article__cta p { color: var(--white-80); margin-bottom: 20px; position: relative; }
+    .article__cta .btn { position: relative; }
+
+    /* FOOTER */
+    footer { padding: 48px 0 32px; border-top: 1px solid var(--border); margin-top: 80px; }
+    footer a { border-bottom: none; }
+    .footer__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .footer__logo { display: flex; align-items: center; }
+    .footer__logo img { width: 200px; display: block; }
+    .footer__links { display: flex; gap: 28px; list-style: none; }
+    .footer__links a { color: var(--white-50); text-decoration: none; font-size: 0.88rem; transition: color var(--transition); }
+    .footer__links a:hover { color: var(--yellow); }
+    .footer__copy {
+      font-size: 0.82rem; color: var(--white-20); width: 100%; text-align: center;
+      padding-top: 24px; border-top: 1px solid var(--border); margin-top: 24px;
+    }
+    /* FOOTER CONTACT / SOCIAL */
+    .footer__contact {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px 24px;
+      margin-top: 28px;
+    }
+    .footer__contact a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--white-50);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: all var(--transition);
+    }
+    .footer__contact a:hover { color: var(--yellow); }
+    .footer__contact svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .footer__contact .footer__whatsapp {
+      background: #25D366;
+      color: var(--black);
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: var(--r-sm);
+    }
+    .footer__contact .footer__whatsapp:hover {
+      background: #1ebe5d;
+      color: var(--black);
+      transform: translateY(-2px);
+    }
+    @media (max-width: 768px) {
+      .footer__inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer__links { flex-wrap: wrap; gap: 12px 20px; }
+      .footer__contact { width: 100%; gap: 14px 20px; margin-top: 24px; }
+    }
+    @media (max-width: 480px) {
+      .footer__logo img { width: 150px; }
+      .footer__links { gap: 10px 16px; font-size: 0.82rem; }
+      .btn--sm { padding: 7px 13px; font-size: 0.82rem; }
+      .footer__contact { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .footer__contact a { font-size: 0.86rem; }
+      .footer__contact .footer__whatsapp { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav__close" onclick="toggleMobileNav()">✕</button>
+    <a href="/#case-studies" onclick="toggleMobileNav()">Work</a>
+    <a href="/#process" onclick="toggleMobileNav()">Process</a>
+    <a href="/#pricing" onclick="toggleMobileNav()">Pricing</a>
+    <a href="/#community" onclick="toggleMobileNav()">Community</a>
+    <a href="/blog/" onclick="toggleMobileNav()">Blog</a>
+    <a href="/#contact" onclick="toggleMobileNav()">Contact</a>
+  </nav>
+
+  <header>
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="navbar__inner">
+          <a href="/" class="navbar__logo"><img src="../../assets/1.png" alt="Revenue Lyft"></a>
+          <ul class="navbar__links">
+            <li><a href="/#case-studies">Work</a></li>
+            <li><a href="/#process">Process</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#community">Community</a></li>
+          </ul>
+          <div class="navbar__cta">
+            <a href="/#contact" class="btn btn--primary btn--sm">Book Free Consultation</a>
+          </div>
+          <button class="navbar__mobile-toggle" onclick="toggleMobileNav()">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <article>
+    <div class="article__container">
+      <a href="/blog/" class="article__back">All articles</a>
+
+      <div class="article__meta">July 2, 2026 · 6 min read</div>
+      <h1 class="article__title">The Monday Morning Report: What Recurring Reports Actually Cost Your Small Business</h1>
+      <p class="article__lede">Recurring reports quietly cost small businesses 10-20 hours a week. Here's the math, a 5-minute calculator, and when to automate.</p>
+
+      <div class="article__divider"></div>
+
+      <div class="article__body">
+        <h2>TL;DR</h2>
+<p>A recurring report is any weekly or monthly summary your team rebuilds by hand from software you already own. Small business teams spend 10-20 hours a week on these reports (Clockify, 2025), which usually works out to $15,000-$30,000 per year in labor for a single weekly report. If a report takes more than 4 hours a week, pulls from 2+ data sources, or delays a decision, it's time to automate it.</p>
+<h2>Key takeaways</h2>
+<ul><li>Teams spend 10-20 hours per week rebuilding recurring reports (Clockify, 2025).</li><li>Knowledge workers lose about 9.3 hours a week just searching for information (McKinsey).</li><li>One weekly report at 6 hours a week costs a 12-person business roughly $16,000 a year in wages.</li><li>Manual data entry costs about $28,500 per employee per year (Parseur).</li><li>Automation of recurring reports pays back in 2-6 months for most small businesses.</li><li>92% of workers say automation increased their productivity (Clockify).</li></ul>
+<p>A recurring report is any dashboard, summary, or update your team rebuilds on a fixed schedule from data that already lives in your software.</p>
+<h2>What counts as a recurring report?</h2>
+<p>A recurring report is any report you produce on a repeating schedule from data you already have. If someone opens the same three tabs every Monday and copies numbers into the same template, that's a recurring report.</p>
+<p>Common examples in a small business:</p>
+<ul><li>Weekly sales by rep or product</li><li>Cash position and accounts receivable</li><li>Sales pipeline and forecast</li><li>Client status updates for retainer work</li><li>Inventory on hand vs reorder points</li><li>Payroll prep and timesheet summaries</li><li>Weekly KPIs for the owner or board</li></ul>
+<p>None of these create new information. They just move information from one place to another so a human can read it.</p>
+<h2>Why is the true cost invisible?</h2>
+<p>The true cost of recurring reports is invisible because nobody logs the time, and the work is spread across several people. The ops manager pulls the numbers. The bookkeeper fixes a formula. The owner asks a follow-up question that triggers a rebuild. No single person feels the full weight.</p>
+<p>There's a second hidden cost: the report blocks a decision. If Monday's numbers land at 2pm on Monday, every decision that depends on them slips half a day. Over a year, that's a lot of slipped decisions.</p>
+<h2>The 5-minute cost calculator</h2>
+<p>You can price your recurring report in one line: hours per week x loaded hourly wage x 52 weeks. Loaded wage means base pay plus taxes, benefits, and overhead, usually 1.25-1.4x salary.</p>
+<p>Steps:</p>
+<ol><li>Pick one recurring report.</li><li>Ask the person who builds it, honestly, how many hours a week it takes (include gathering, cleaning, and rework).</li><li>Multiply by their loaded hourly rate.</li><li>Multiply by 52.</li></ol>
+<p>That number is the annual cost of one report. Most owners are shocked by the total.</p>
+<h2>Worked example: a 12-person HVAC company</h2>
+<p>An HVAC company with 12 employees runs one weekly operations report every Monday. The ops manager, on a $85,000 salary, spends 6 hours a week building it. Her loaded hourly rate is about $52.</p>
+<p>The math: 6 hours x $52 x 52 weeks = $16,224 per year.</p>
+<p>Add the owner's 45 minutes reviewing it, plus about 2 hours of weekly rework when numbers don't match the CRM, and the total lands near $23,000 a year. For one report. Automating it with a scheduled pull from their CRM and QuickBooks into a shared dashboard took roughly 3 weeks of build time and paid back in under 6 months.</p>
+<h2>The three levels of automation</h2>
+<p>There are three practical levels of report automation, and most small businesses skip straight past level one.</p>
+<p><strong>Level 1: Scheduled export plus template.</strong> Set your CRM, accounting tool, or POS to email a CSV every Monday at 6am. Drop it into a pre-built spreadsheet template with formulas already in place. Cost: free. Time saved: about 40%.</p>
+<p><strong>Level 2: No-code tool plus Google Sheets.</strong> Use Zapier or Make (both are drag-and-drop automation tools) to pipe data from multiple apps into one sheet automatically. Cost: $30-$150 a month. Time saved: about 70%.</p>
+<p><strong>Level 3: Custom internal dashboard.</strong> A small web app that pulls live data through APIs (the direct data connections most software offers) and shows it on one page. Cost: usually $8,000-$25,000 to build. Time saved: 90%+, plus the report is always current.</p>
+<h2>When should you stay in a spreadsheet vs build?</h2>
+<p>Stay in a spreadsheet if the report takes under 2 hours a week, uses one data source, and nobody is waiting on it. Automate the moment any of these hit:</p>
+<ul><li>The report takes more than 4 hours a week.</li><li>It pulls from 2 or more systems.</li><li>A decision gets delayed because the report isn't ready.</li><li>The person who builds it is your bottleneck.</li><li>Errors in the report have caused a bad decision in the last 6 months.</li></ul>
+<p>Gartner found that finance departments using process automation saved roughly 25,000 hours of rework a year. That scale doesn't apply to a 12-person shop, but the ratio does.</p>
+<h2>FAQ</h2>
+<h3>How long does it take to build an automated report?</h3>
+<p>A level 2 no-code setup takes 1-3 days. A level 3 custom dashboard typically takes 2-6 weeks depending on how many data sources and how clean the data is.</p>
+<h3>What does it cost to automate a recurring report?</h3>
+<p>No-code automation runs $30-$150 a month in software fees. A custom internal dashboard usually runs $8,000-$25,000 as a one-time build for a small business.</p>
+<h3>Do we need a data warehouse first?</h3>
+<p>No. Small businesses almost never need a data warehouse for recurring reports. Direct API pulls into a lightweight database or a shared sheet handle it fine until you're past about 50 employees.</p>
+<h3>What if our data is messy?</h3>
+<p>Messy data is normal and fixable. The first 20% of most report automation projects is cleanup rules, deduplication, and mapping between systems. Plan for it, don't skip it.</p>
+<h3>Can AI write the report narrative?</h3>
+<p>Yes. Once the numbers are automated, a language model can draft the "here's what changed this week" summary in plain English, which the owner then edits in 5 minutes instead of writing from scratch.</p>
+<h3>Will automation replace the person who builds the report?</h3>
+<p>Almost never in a small business. It frees them to do the higher-value analysis they were hired for, which is usually the reason they were building the report in the first place.</p>
+<p>At RevenueLyft we build the level 2 and level 3 systems above: scheduled pipelines, internal dashboards, and small AI helpers that turn raw numbers into readable summaries. If your Monday report takes more than a coffee, we can usually cost it out in a 20-minute call.</p>
+<h2>Sources</h2>
+<ul><li><a href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-social-economy">McKinsey — The social economy: unlocking value through social technologies</a></li><li><a href="https://clockify.me/time-spent-on-recurring-tasks">Clockify — Time spent on recurring tasks</a></li><li><a href="https://parseur.com/blog/manual-data-entry-report">Parseur — Manual data entry report</a></li><li><a href="https://agencyanalytics.com/company/customers/ben-spray">AgencyAnalytics — Ben Spray customer story</a></li><li><a href="https://www.valamis.com/blog/why-do-we-spend-all-that-time-searching-for-information-at-work">Valamis — Why do we spend all that time searching for information at work</a></li><li><a href="https://www.spiderstrategies.com/blog/manual-reporting/">Spider Strategies — The hidden cost of manual reporting</a></li><li><a href="https://blog.hubspot.com/marketing/automate-business-reporting">HubSpot — How to automate business reporting</a></li></ul>
+      </div>
+
+      <div class="article__cta">
+        <h3>Want help building this for your business?</h3>
+        <p>We build the automations and custom software so you don't have to. Free first call, no pressure.</p>
+        <a href="/#contact" class="btn btn--primary">Book a Free Consultation</a>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__logo"><img src="../../assets/1.png" alt="Revenue Lyft"></div>
+        <ul class="footer__links">
+          <li><a href="/#case-studies">Work</a></li>
+          <li><a href="/#process">Process</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/#community">Community</a></li>
+        </ul>
+        <a href="/#contact" class="btn btn--primary btn--sm">Book a Call</a>
+      </div>
+      <div class="footer__contact">
+        <a href="https://www.linkedin.com/company/revenuelyft" target="_blank" rel="noopener" aria-label="Revenue Lyft on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:mubeen@revenuelyft.com" aria-label="Email Revenue Lyft">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          mubeen@revenuelyft.com
+        </a>
+        <a class="footer__whatsapp" href="https://wa.me/923343873622" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.74-.86-2.01-.96-.27-.1-.47-.15-.66.15-.2.29-.76.95-.93 1.15-.17.2-.34.22-.64.08-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.29-.02-.45.13-.6.13-.13.3-.34.44-.51.15-.17.2-.29.3-.49.1-.2.05-.37-.03-.52-.07-.15-.66-1.6-.91-2.19-.24-.57-.48-.49-.66-.5h-.56c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.74-.71 1.99-1.4.24-.69.24-1.28.17-1.4-.07-.12-.27-.2-.56-.34zM12.04 21.5a9.5 9.5 0 0 1-4.84-1.33l-.35-.2-3.59.94.96-3.5-.23-.36a9.46 9.46 0 0 1-1.45-5.06c0-5.23 4.26-9.48 9.5-9.48 2.54 0 4.92.99 6.71 2.78a9.43 9.43 0 0 1 2.78 6.71c0 5.24-4.26 9.5-9.5 9.5zm8.08-17.58A11.42 11.42 0 0 0 12.04 0C5.74 0 .62 5.12.62 11.42c0 2.01.53 3.97 1.53 5.7L.52 24l6.05-1.59a11.4 11.4 0 0 0 5.46 1.39h.01c6.3 0 11.42-5.12 11.42-11.42 0-3.05-1.19-5.92-3.34-8.07z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <p class="footer__copy">
+        © 2026 Revenue Lyft. All rights reserved.<br>
+        <a href="https://revenuelyft.com" style="color: var(--white-20);">revenuelyft.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const navbar = document.getElementById('navbar');
+      const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 60);
+      window.addEventListener('scroll', onScroll);
+      onScroll();
+    })();
+    function toggleMobileNav() {
+      document.getElementById('mobileNav').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
