@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Automate Client Onboarding (Without Losing the Human Touch) | Revenue Lyft</title>
+  <meta name="description" content="Manual client onboarding eats 3–11 hours per client. Here's what to automate, what to keep human, and what it costs a small business." />
+  <link rel="canonical" href="https://revenuelyft.com/blog/posts/automate-client-onboarding-small-business.html" />
+  <meta property="og:title" content="How to Automate Client Onboarding (Without Losing the Human Touch) | Revenue Lyft" />
+  <meta property="og:description" content="Manual client onboarding eats 3–11 hours per client. Here's what to automate, what to keep human, and what it costs a small business." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://revenuelyft.com/blog/posts/automate-client-onboarding-small-business.html" />
+  <meta property="article:published_time" content="2026-07-14T12:00:00.000Z" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to Automate Client Onboarding (Without Losing the Human Touch)",
+    "description": "Manual client onboarding eats 3–11 hours per client. Here's what to automate, what to keep human, and what it costs a small business.",
+    "datePublished": "2026-07-14T12:00:00.000Z",
+    "author": {"@type": "Organization", "name": "Revenue Lyft"},
+    "publisher": {"@type": "Organization", "name": "Revenue Lyft", "url": "https://revenuelyft.com"}
+  }
+  </script>
+
+  <style>
+    :root {
+      --black: #0A0A0A;
+      --black-2: #111111;
+      --black-3: #1A1A1A;
+      --black-4: #222222;
+      --black-5: #2C2C2C;
+      --yellow: #F5C800;
+      --yellow-dim: #C9A400;
+      --white: #FFFFFF;
+      --white-80: rgba(255, 255, 255, 0.80);
+      --white-50: rgba(255, 255, 255, 0.50);
+      --white-20: rgba(255, 255, 255, 0.20);
+      --white-08: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.10);
+      --border-y: rgba(245, 200, 0, 0.25);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --r-sm: 8px;
+      --r-md: 14px;
+      --r-lg: 20px;
+      --r-xl: 28px;
+      --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--yellow); text-decoration: none; border-bottom: 1px solid var(--border-y); transition: border-color var(--transition); }
+    a:hover { border-color: var(--yellow); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 2px 0; transition: all var(--transition);
+    }
+    .navbar.scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 4px 0;
+    }
+    header a { border-bottom: none; }
+    .navbar__inner { display: flex; align-items: center; justify-content: space-between; }
+    .navbar__logo { text-decoration: none; display: flex; align-items: center; flex-shrink: 0; }
+    .navbar__logo img { width: 180px; display: block; transition: filter var(--transition); }
+    .navbar__links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .navbar__links a { font-size: 0.92rem; font-weight: 500; color: var(--white-80); transition: color var(--transition); }
+    .navbar__links a:hover { color: var(--yellow); }
+    .navbar__cta { display: flex; gap: 12px; align-items: center; }
+    .navbar__mobile-toggle {
+      display: none; background: none; border: none; cursor: pointer;
+      flex-direction: column; gap: 5px; padding: 4px;
+    }
+    .navbar__mobile-toggle span {
+      display: block; width: 24px; height: 2px; background: var(--white);
+      transition: all var(--transition);
+    }
+
+    /* MOBILE NAV OVERLAY */
+    .mobile-nav {
+      display: none; position: fixed; inset: 0; background: var(--black);
+      z-index: 999; flex-direction: column; align-items: center;
+      justify-content: center; gap: 32px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--font-display); font-size: 2.5rem; color: var(--white);
+      text-decoration: none; letter-spacing: 0.05em; transition: color var(--transition);
+      border-bottom: none;
+    }
+    .mobile-nav a:hover { color: var(--yellow); }
+    .mobile-nav__close {
+      position: absolute; top: 24px; right: 24px; background: none; border: none;
+      color: var(--white); font-size: 2rem; cursor: pointer;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--r-sm);
+      font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+      cursor: pointer; transition: all var(--transition); text-decoration: none;
+      border: none; white-space: nowrap;
+    }
+    .btn--primary { background: var(--yellow); color: var(--black); border-bottom: none; }
+    .btn--primary:hover { background: #FFD700; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(245, 200, 0, 0.35); border-bottom: none; }
+    .btn--sm { padding: 8px 16px; font-size: 0.88rem; }
+    @media (max-width: 768px) {
+      .navbar__links,
+      .navbar__cta { display: none; }
+      .navbar__mobile-toggle { display: flex; }
+      .navbar__logo img { width: 120px; }
+      .footer__inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer__links { flex-wrap: wrap; gap: 12px 20px; }
+      .footer__logo img { width: 150px; }
+
+      .container, .article__container { padding-left: 20px; padding-right: 20px; }
+      article { padding: 72px 0 48px; }
+      .article__lede { font-size: 17px; margin-bottom: 36px; }
+      .article__divider { margin-bottom: 36px; }
+      .article__body h2 { font-size: 30px; margin: 44px 0 14px; }
+      .article__body h3 { font-size: 20px; margin: 30px 0 10px; }
+      .article__cta { padding: 32px 22px; margin-top: 48px; }
+      .article__cta h3 { font-size: 30px; }
+    }
+
+    @media (max-width: 480px) {
+      html, body { font-size: 16px; }
+      .container, .article__container { padding-left: 16px; padding-right: 16px; }
+      article { padding: 64px 0 40px; }
+      .article__title { line-height: 1.05; }
+      .article__lede { font-size: 16px; }
+      .article__body h2 { font-size: 26px; }
+      .article__body h3 { font-size: 19px; }
+      .article__body pre { padding: 14px; border-radius: var(--r-sm); }
+      .article__cta { padding: 24px 18px; }
+      .article__cta h3 { font-size: 26px; }
+      .footer__links { gap: 10px 16px; font-size: 0.82rem; }
+      .mobile-nav a { font-size: 2rem; }
+    }
+
+    /* ARTICLE */
+    article { padding: 80px 0 64px; }
+    .article__container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .article__back {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--white-50); margin-bottom: 32px;
+      display: inline-block; border-bottom: none;
+    }
+    .article__back:hover { color: var(--yellow); }
+    .article__back::before { content: '← '; }
+    .article__meta {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 16px;
+    }
+    .article__title {
+      font-family: var(--font-display); font-size: clamp(44px, 6.5vw, 80px);
+      line-height: 1.0; letter-spacing: 0.005em; text-transform: uppercase; margin-bottom: 24px;
+    }
+    .article__lede {
+      font-size: 19px; color: var(--white-80); margin-bottom: 48px; line-height: 1.6;
+    }
+    .article__divider { height: 1px; background: var(--border); margin: 0 0 48px; }
+    .article__body { color: var(--white-80); }
+    .article__body h2 {
+      font-family: var(--font-display); font-size: 36px; line-height: 1.05; text-transform: uppercase;
+      letter-spacing: 0.01em; color: var(--white); margin: 56px 0 16px;
+    }
+    .article__body h3 {
+      font-family: var(--font-body); font-weight: 600; font-size: 22px; color: var(--white);
+      margin: 36px 0 12px;
+    }
+    .article__body p { margin-bottom: 20px; }
+    .article__body ul, .article__body ol { margin: 0 0 20px 24px; }
+    .article__body li { margin-bottom: 8px; }
+    .article__body strong { color: var(--white); }
+    .article__body code {
+      font-family: var(--font-mono); font-size: 0.92em; background: var(--black-3);
+      padding: 2px 6px; border-radius: 4px; color: var(--yellow);
+    }
+    .article__body pre {
+      background: var(--black-2); border: 1px solid var(--border); border-radius: var(--r-md);
+      padding: 20px; overflow-x: auto; margin-bottom: 24px;
+    }
+    .article__body pre code { background: transparent; padding: 0; color: var(--white-80); }
+    .article__body blockquote {
+      border-left: 3px solid var(--yellow); padding: 4px 0 4px 20px; margin: 24px 0;
+      color: var(--white); font-style: italic;
+    }
+
+    /* CTA */
+    .article__cta {
+      margin: 64px 0 0; padding: 40px 32px; background: var(--black-2);
+      border: 1px solid var(--border); border-radius: var(--r-lg); position: relative; overflow: hidden;
+    }
+    .article__cta::before {
+      content: ''; position: absolute; right: -60px; top: -60px;
+      width: 200px; height: 200px; background: var(--yellow); border-radius: var(--r-lg);
+      opacity: 0.08;
+    }
+    .article__cta h3 {
+      font-family: var(--font-display); font-size: 36px; text-transform: uppercase;
+      line-height: 1.05; margin-bottom: 12px; color: var(--white); position: relative;
+    }
+    .article__cta p { color: var(--white-80); margin-bottom: 20px; position: relative; }
+    .article__cta .btn { position: relative; }
+
+    /* FOOTER */
+    footer { padding: 48px 0 32px; border-top: 1px solid var(--border); margin-top: 80px; }
+    footer a { border-bottom: none; }
+    .footer__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .footer__logo { display: flex; align-items: center; }
+    .footer__logo img { width: 200px; display: block; }
+    .footer__links { display: flex; gap: 28px; list-style: none; }
+    .footer__links a { color: var(--white-50); text-decoration: none; font-size: 0.88rem; transition: color var(--transition); }
+    .footer__links a:hover { color: var(--yellow); }
+    .footer__copy {
+      font-size: 0.82rem; color: var(--white-20); width: 100%; text-align: center;
+      padding-top: 24px; border-top: 1px solid var(--border); margin-top: 24px;
+    }
+    /* FOOTER CONTACT / SOCIAL */
+    .footer__contact {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px 24px;
+      margin-top: 28px;
+    }
+    .footer__contact a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--white-50);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: all var(--transition);
+    }
+    .footer__contact a:hover { color: var(--yellow); }
+    .footer__contact svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .footer__contact .footer__whatsapp {
+      background: #25D366;
+      color: var(--black);
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: var(--r-sm);
+    }
+    .footer__contact .footer__whatsapp:hover {
+      background: #1ebe5d;
+      color: var(--black);
+      transform: translateY(-2px);
+    }
+    @media (max-width: 768px) {
+      .footer__inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer__links { flex-wrap: wrap; gap: 12px 20px; }
+      .footer__contact { width: 100%; gap: 14px 20px; margin-top: 24px; }
+    }
+    @media (max-width: 480px) {
+      .footer__logo img { width: 150px; }
+      .footer__links { gap: 10px 16px; font-size: 0.82rem; }
+      .btn--sm { padding: 7px 13px; font-size: 0.82rem; }
+      .footer__contact { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .footer__contact a { font-size: 0.86rem; }
+      .footer__contact .footer__whatsapp { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav__close" onclick="toggleMobileNav()">✕</button>
+    <a href="/#case-studies" onclick="toggleMobileNav()">Work</a>
+    <a href="/#process" onclick="toggleMobileNav()">Process</a>
+    <a href="/#pricing" onclick="toggleMobileNav()">Pricing</a>
+    <a href="/#community" onclick="toggleMobileNav()">Community</a>
+    <a href="/blog/" onclick="toggleMobileNav()">Blog</a>
+    <a href="/#contact" onclick="toggleMobileNav()">Contact</a>
+  </nav>
+
+  <header>
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="navbar__inner">
+          <a href="/" class="navbar__logo"><img src="../../assets/1.png" alt="Revenue Lyft"></a>
+          <ul class="navbar__links">
+            <li><a href="/#case-studies">Work</a></li>
+            <li><a href="/#process">Process</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#community">Community</a></li>
+          </ul>
+          <div class="navbar__cta">
+            <a href="/#contact" class="btn btn--primary btn--sm">Book Free Consultation</a>
+          </div>
+          <button class="navbar__mobile-toggle" onclick="toggleMobileNav()">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <article>
+    <div class="article__container">
+      <a href="/blog/" class="article__back">All articles</a>
+
+      <div class="article__meta">July 14, 2026 · 6 min read</div>
+      <h1 class="article__title">How to Automate Client Onboarding (Without Losing the Human Touch)</h1>
+      <p class="article__lede">Manual client onboarding eats 3–11 hours per client. Here's what to automate, what to keep human, and what it costs a small business.</p>
+
+      <div class="article__divider"></div>
+
+      <div class="article__body">
+        <h2>TL;DR</h2>
+<p>Manual client onboarding costs a small business about 11 hours per new client and quietly leaks $50,000 to $120,000 a year in avoidable rework. Automating the intake form, contract, payment, and kickoff sequence typically cuts onboarding time by 68% and lifts 6-month client retention from 71% to 88%. The trick is automating the paperwork and status updates while keeping the human moments (the welcome call, the strategy chat) in human hands.</p>
+<h2>Key takeaways</h2>
+<ul><li>Manual onboarding takes about 11 hours per client, and 3 to 5 of those hours are just emails and data entry (GroundWorks, 2025).</li><li>Automating intake, contracts, and payment reduces onboarding time by an average of 68% and saves 3.5 to 4.5 staff hours per client (CPA Practice Advisor, 2025).</li><li>6-month retention is 88% for clients onboarded through an automated flow versus 71% for manual onboarding (OnboardMap).</li><li>70% of customers abandon a digital signup that takes longer than 20 minutes, so speed matters as much as polish.</li><li>A short recorded welcome video raises document submission in the first 72 hours by 28%.</li></ul>
+<p>Client onboarding automation is a set of connected software steps that handle the intake form, contract, payment, and kickoff scheduling for a new client without a staff member manually copying data between apps.</p>
+<h2>What client onboarding actually involves</h2>
+<p>Client onboarding is everything that happens between "yes, I'll hire you" and the first real piece of work. For most service businesses, that's five things: an intake form, a signed contract, a first payment or deposit, a kickoff meeting, and access to shared tools (a project folder, a Slack channel, a login).</p>
+<p>Done manually, one person stitches all five together over email. They copy the client's answers into a CRM (a contact database), paste them into a contract, send it for signature, chase the payment, book the meeting, and set up the folders.</p>
+<p>Each handoff is a place where something gets missed.</p>
+<h2>Why the manual version quietly costs so much</h2>
+<p>The manual version costs so much because the time is invisible until you add it up. Industry data pegs the average onboarding at 11 hours per client, with 3 to 5 of those hours going to email back-and-forth and retyping the same information into different tools (GroundWorks).</p>
+<p>That's the visible cost. The hidden cost is bigger. Service businesses lose an estimated $50,000 to $120,000 a year on avoidable onboarding issues (OnboardMap): clients who ghost during a slow signup, missed contract clauses, refunded deposits, and the churn that comes from a rocky first two weeks.</p>
+<p>70% of customers walk away from a digital signup that takes more than 20 minutes to complete. If your intake is a PDF plus three emails, you're already over that line.</p>
+<h2>What to automate first (and what to leave alone)</h2>
+<p>Automate the paperwork; keep the conversations human. In practice, that means the first automation wave should cover:</p>
+<ol><li>A single intake form that feeds your CRM directly (no retyping).</li><li>A contract that auto-fills from the form and sends itself for e-signature.</li><li>A payment link that appears the moment the contract is signed.</li><li>A calendar link for the kickoff call that only unlocks after payment clears.</li><li>Auto-created project folders, shared drives, and login invites.</li></ol>
+<p>Leave alone: the welcome call, the strategy conversation, the first "how are we doing?" check-in at day 14. Those are the moments that make a client feel picked, not processed. A 90-second recorded welcome video from the founder is a nice middle ground and lifts document submission in the first 72 hours by 28%.</p>
+<h2>Off-the-shelf vs custom: when to graduate</h2>
+<p>Off-the-shelf tools (Dubsado, HoneyBook, Rocketlane, or a Zapier chain between Typeform, DocuSign, and Stripe) work well when your onboarding is roughly the same for every client. You can usually stand one up in a week for a few hundred dollars a month.</p>
+<p>You graduate to custom when three things start happening at once: onboarding branches by service type or client size, the flow has to write into three or more other systems (your CRM, your accounting tool, your project software), or a compliance step (KYC, insurance verification, background check) needs to gate the next stage. At that point, template tools start breaking in small, embarrassing ways.</p>
+<h2>A worked example: 12-person marketing agency</h2>
+<p>A 12-person marketing agency signs 8 new clients a month. Before automation, onboarding took 4.2 staff hours per client at a fully loaded rate of $42 an hour. That's 8 × 4.2 × $42 = $1,411 a month, or about $16,900 a year, spent on paperwork.</p>
+<p>After automating intake, contract, payment, and kickoff scheduling, the same work took 10 staff hours a month total. New annual cost: about $5,000. Net savings: roughly $8,400 a year, plus the retention lift (88% vs 71% at six months) worth far more than the time saved.</p>
+<p>Setup took a project manager three weeks and about $6,000 in tools and configuration. Payback was under nine months.</p>
+<h2>FAQ</h2>
+<h3>How long does it take to set up automated onboarding?</h3>
+<p>A basic off-the-shelf flow (form, contract, payment, calendar) takes about one to two weeks for a small business to configure. A custom build that branches by service type and writes into multiple systems usually takes 4 to 8 weeks.</p>
+<h3>Is Zapier enough, or do I need something custom?</h3>
+<p>Zapier is enough if your onboarding steps are linear and identical for every client. Once the flow has to make decisions (different contracts by service, different approvals by deal size) or write to more than three systems, Zapier starts to break and a custom tool is cheaper long-term.</p>
+<h3>Won't automated onboarding feel impersonal?</h3>
+<p>It only feels impersonal if you automate the wrong parts. Automate the paperwork and status updates; keep the welcome call, the kickoff, and the first check-in human. Clients don't miss retyping their address.</p>
+<h3>What should I automate first?</h3>
+<p>Start with the intake form feeding your CRM directly, then the contract auto-fill, then the payment link. Those three steps remove the most staff hours and the most drop-off.</p>
+<h3>How much does it cost to build a custom onboarding system?</h3>
+<p>A tailored onboarding system for a small service business typically runs $6,000 to $25,000 depending on the number of integrations. Most clients see payback in 6 to 12 months from staff time saved and higher retention.</p>
+<p>When your onboarding starts branching by service type or has to write into three other systems, templates start to break in small, embarrassing ways. That's usually the point our clients call us in — we build the custom intake-to-kickoff flow that plugs into the tools you already use. If that sounds like where you're headed, we're happy to walk through it.</p>
+<h2>Sources</h2>
+<ul><li><a href="https://onboardmap.com/insights/onboarding/true-cost-of-bad-client-onboarding/">OnboardMap — True Cost of Bad Client Onboarding</a></li><li><a href="https://www.groundworksdev.com/blog/08-how-to-automate-client-onboarding">GroundWorks — How to Automate Client Onboarding</a></li><li><a href="https://ustechautomations.com/resources/blog/accounting-firm-onboarding-automation-checklist">US Tech Automations — Accounting Firm Onboarding Automation Checklist</a></li><li><a href="https://www.getcontrast.io/learn/automate-client-onboarding">Contrast — Automate Client Onboarding</a></li><li><a href="https://stealthagents.com/research/small-business-automation-statistics-2026">Stealth Agents — Small Business Automation Statistics 2026</a></li><li><a href="https://www.rocketlane.com/blogs/client-onboarding">Rocketlane — Client Onboarding</a></li></ul>
+      </div>
+
+      <div class="article__cta">
+        <h3>Want help building this for your business?</h3>
+        <p>We build the automations and custom software so you don't have to. Free first call, no pressure.</p>
+        <a href="/#contact" class="btn btn--primary">Book a Free Consultation</a>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__logo"><img src="../../assets/1.png" alt="Revenue Lyft"></div>
+        <ul class="footer__links">
+          <li><a href="/#case-studies">Work</a></li>
+          <li><a href="/#process">Process</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/#community">Community</a></li>
+        </ul>
+        <a href="/#contact" class="btn btn--primary btn--sm">Book a Call</a>
+      </div>
+      <div class="footer__contact">
+        <a href="https://www.linkedin.com/company/revenuelyft" target="_blank" rel="noopener" aria-label="Revenue Lyft on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:mubeen@revenuelyft.com" aria-label="Email Revenue Lyft">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          mubeen@revenuelyft.com
+        </a>
+        <a class="footer__whatsapp" href="https://wa.me/923343873622" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.74-.86-2.01-.96-.27-.1-.47-.15-.66.15-.2.29-.76.95-.93 1.15-.17.2-.34.22-.64.08-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.29-.02-.45.13-.6.13-.13.3-.34.44-.51.15-.17.2-.29.3-.49.1-.2.05-.37-.03-.52-.07-.15-.66-1.6-.91-2.19-.24-.57-.48-.49-.66-.5h-.56c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.74-.71 1.99-1.4.24-.69.24-1.28.17-1.4-.07-.12-.27-.2-.56-.34zM12.04 21.5a9.5 9.5 0 0 1-4.84-1.33l-.35-.2-3.59.94.96-3.5-.23-.36a9.46 9.46 0 0 1-1.45-5.06c0-5.23 4.26-9.48 9.5-9.48 2.54 0 4.92.99 6.71 2.78a9.43 9.43 0 0 1 2.78 6.71c0 5.24-4.26 9.5-9.5 9.5zm8.08-17.58A11.42 11.42 0 0 0 12.04 0C5.74 0 .62 5.12.62 11.42c0 2.01.53 3.97 1.53 5.7L.52 24l6.05-1.59a11.4 11.4 0 0 0 5.46 1.39h.01c6.3 0 11.42-5.12 11.42-11.42 0-3.05-1.19-5.92-3.34-8.07z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <p class="footer__copy">
+        © 2026 Revenue Lyft. All rights reserved.<br>
+        <a href="https://revenuelyft.com" style="color: var(--white-20);">revenuelyft.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const navbar = document.getElementById('navbar');
+      const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 60);
+      window.addEventListener('scroll', onScroll);
+      onScroll();
+    })();
+    function toggleMobileNav() {
+      document.getElementById('mobileNav').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
